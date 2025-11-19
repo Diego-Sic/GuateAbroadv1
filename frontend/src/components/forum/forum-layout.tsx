@@ -18,7 +18,6 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import {
   Select,
   SelectContent,
@@ -28,6 +27,10 @@ import {
 } from '@/components/ui/select';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useAuth } from '@/hooks/use-auth';
+import { PostList } from './post-list';
+import type { PostCardProps } from './post-card';
+
+export { PostListSkeleton } from './post-list-skeleton';
 
 const categories = [
   {
@@ -75,42 +78,45 @@ const categories = [
 ];
 
 // Placeholder posts for demonstration
-const placeholderPosts = [
+const placeholderPosts: Omit<PostCardProps, 'category'>[] = [
   {
     id: '1',
-    title: 'Tips for Fulbright application essay',
-    category: 'scholarships',
-    author: 'María G.',
+    title: 'Tips for Fulbright application essay - My complete guide',
+    category: { id: 'scholarships', label: 'Scholarships', color: 'bg-blue-500' },
+    author: { username: 'María G.', avatarUrl: null },
     replies: 12,
     views: 234,
     createdAt: '2 hours ago',
     isPinned: true,
+    excerpt: 'After successfully applying to Fulbright, I want to share my experience and tips for writing a compelling application essay...',
   },
   {
     id: '2',
     title: 'F-1 visa interview experience in Guatemala City',
-    category: 'visa',
-    author: 'Carlos R.',
+    category: { id: 'visa', label: 'Visa', color: 'bg-green-500' },
+    author: { username: 'Carlos R.', avatarUrl: null },
     replies: 8,
     views: 156,
     createdAt: '5 hours ago',
     isPinned: false,
+    excerpt: 'Just had my F-1 visa interview at the US Embassy. Here\'s what to expect and how to prepare...',
   },
   {
     id: '3',
     title: 'Best TOEFL prep resources for Guatemalans',
-    category: 'tests',
-    author: 'Ana L.',
+    category: { id: 'tests', label: 'Tests', color: 'bg-purple-500' },
+    author: { username: 'Ana L.', avatarUrl: null },
     replies: 15,
     views: 312,
     createdAt: '1 day ago',
     isPinned: false,
+    excerpt: 'I scored 110 on TOEFL using these free and paid resources. Here are my recommendations...',
   },
   {
     id: '4',
     title: 'How to choose between universities?',
-    category: 'university',
-    author: 'Pedro M.',
+    category: { id: 'university', label: 'University', color: 'bg-orange-500' },
+    author: { username: 'Pedro M.', avatarUrl: null },
     replies: 6,
     views: 98,
     createdAt: '2 days ago',
@@ -119,14 +125,44 @@ const placeholderPosts = [
   {
     id: '5',
     title: 'Looking for study buddies in Guatemala',
-    category: 'general',
-    author: 'Sofia V.',
+    category: { id: 'general', label: 'General', color: 'bg-gray-500' },
+    author: { username: 'Sofia V.', avatarUrl: null },
     replies: 4,
     views: 67,
     createdAt: '3 days ago',
     isPinned: false,
   },
-];
+  {
+    id: '6',
+    title: 'LASPAU scholarship timeline and requirements',
+    category: { id: 'scholarships', label: 'Scholarships', color: 'bg-blue-500' },
+    author: { username: 'Diego S.', avatarUrl: null },
+    replies: 9,
+    views: 189,
+    createdAt: '4 days ago',
+    isPinned: false,
+  },
+  {
+    id: '7',
+    title: 'GRE study plan - 3 months preparation',
+    category: { id: 'tests', label: 'Tests', color: 'bg-purple-500' },
+    author: { username: 'Laura M.', avatarUrl: null },
+    replies: 11,
+    views: 245,
+    createdAt: '5 days ago',
+    isPinned: false,
+  },
+  {
+    id: '8',
+    title: 'J-1 vs F-1 visa - Which one is right for you?',
+    category: { id: 'visa', label: 'Visa', color: 'bg-green-500' },
+    author: { username: 'Roberto A.', avatarUrl: null },
+    replies: 7,
+    views: 134,
+    createdAt: '1 week ago',
+    isPinned: false,
+  },
+] as PostCardProps[];
 
 export function ForumLayout() {
   const { user } = useAuth();
@@ -135,7 +171,7 @@ export function ForumLayout() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredPosts = placeholderPosts.filter((post) => {
-    if (selectedCategory !== 'all' && post.category !== selectedCategory) {
+    if (selectedCategory !== 'all' && post.category.id !== selectedCategory) {
       return false;
     }
     if (searchQuery && !post.title.toLowerCase().includes(searchQuery.toLowerCase())) {
@@ -263,59 +299,16 @@ export function ForumLayout() {
           </div>
 
           {/* Posts List */}
-          <div className="space-y-4">
-            {sortedPosts.length > 0 ? (
-              sortedPosts.map((post) => {
-                const category = categories.find((c) => c.id === post.category);
-                return (
-                  <Card key={post.id} className="transition-shadow hover:shadow-md">
-                    <CardContent className="p-4">
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="flex-1">
-                          <div className="mb-2 flex items-center gap-2">
-                            {post.isPinned && (
-                              <Badge variant="secondary" className="text-xs">
-                                Pinned
-                              </Badge>
-                            )}
-                            <Badge
-                              variant="outline"
-                              className={`text-xs ${category?.color} bg-opacity-10`}
-                            >
-                              {category?.label}
-                            </Badge>
-                          </div>
-                          <h3 className="mb-1 font-semibold hover:text-primary">
-                            <Link href={`/forum/post/${post.id}`}>{post.title}</Link>
-                          </h3>
-                          <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                            <span>by {post.author}</span>
-                            <span>{post.createdAt}</span>
-                          </div>
-                        </div>
-                        <div className="text-right text-sm text-muted-foreground">
-                          <div>{post.replies} replies</div>
-                          <div>{post.views} views</div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                );
-              })
-            ) : (
-              <Card>
-                <CardContent className="py-12 text-center">
-                  <MessageSquare className="mx-auto mb-4 h-12 w-12 text-muted-foreground" />
-                  <h3 className="mb-2 text-lg font-semibold">No posts found</h3>
-                  <p className="text-muted-foreground">
-                    {searchQuery
-                      ? 'Try a different search term'
-                      : 'Be the first to start a discussion!'}
-                  </p>
-                </CardContent>
-              </Card>
-            )}
-          </div>
+          <PostList
+            posts={sortedPosts}
+            pageSize={5}
+            emptyMessage="No posts found"
+            emptyDescription={
+              searchQuery
+                ? 'Try a different search term'
+                : 'Be the first to start a discussion!'
+            }
+          />
         </div>
       </div>
     </div>

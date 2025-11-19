@@ -2,10 +2,11 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X, User } from 'lucide-react';
+import { Menu, X, User, LogOut } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/use-auth';
+import { signOut } from '@/lib/actions/auth';
 
 const navLinks = [
   { href: '/forum', label: 'Forum' },
@@ -48,7 +49,7 @@ export function Header() {
               <Button variant="ghost" asChild>
                 <Link href="/dashboard">Dashboard</Link>
               </Button>
-              <Button asChild>
+              <Button variant="ghost" asChild>
                 <Link href="/profile">
                   <User className="mr-2 h-4 w-4" />
                   {user.user_metadata?.username ||
@@ -56,6 +57,12 @@ export function Header() {
                     'Profile'}
                 </Link>
               </Button>
+              <form action={signOut}>
+                <Button variant="outline" size="sm" type="submit">
+                  <LogOut className="mr-2 h-4 w-4" />
+                  Sign out
+                </Button>
+              </form>
             </>
           ) : (
             <>
@@ -103,7 +110,7 @@ export function Header() {
                   <Button variant="outline" asChild>
                     <Link href="/dashboard">Dashboard</Link>
                   </Button>
-                  <Button asChild>
+                  <Button variant="outline" asChild>
                     <Link href="/profile">
                       <User className="mr-2 h-4 w-4" />
                       {user.user_metadata?.username ||
@@ -111,6 +118,12 @@ export function Header() {
                         'Profile'}
                     </Link>
                   </Button>
+                  <form action={signOut}>
+                    <Button variant="destructive" className="w-full" type="submit">
+                      <LogOut className="mr-2 h-4 w-4" />
+                      Sign out
+                    </Button>
+                  </form>
                 </>
               ) : (
                 <>
