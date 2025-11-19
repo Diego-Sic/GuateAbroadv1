@@ -42,49 +42,29 @@ export async function createReply(
     };
   }
 
-  // Try to save to database
-  try {
-    const { data: reply, error } = await supabase
-      .from('forum_replies')
-      .insert({
-        content,
-        post_id: postId,
-        parent_reply_id: parentReplyId || null,
-        author_id: user.id,
-      })
-      .select('id')
-      .single();
+  // Save to database
+  const { data: reply, error } = await supabase
+    .from('forum_replies')
+    .insert({
+      content,
+      post_id: postId,
+      parent_reply_id: parentReplyId || null,
+      author_id: user.id,
+    })
+    .select('id')
+    .single();
 
-    if (error) {
-      // If table doesn't exist, return a placeholder success
-      if (error.code === '42P01' || error.message.includes('does not exist')) {
-        const fakeId = Math.random().toString(36).substring(2, 9);
-        return {
-          success: true,
-          message: 'Reply posted successfully! (Demo mode)',
-          replyId: fakeId,
-        };
-      }
-
-      console.error('Error creating reply:', error);
-      return {
-        success: false,
-        error: 'Failed to post reply. Please try again.',
-      };
-    }
-
+  if (error) {
+    console.error('Error creating reply:', error);
     return {
-      success: true,
-      message: 'Reply posted successfully!',
-      replyId: reply.id,
-    };
-  } catch {
-    // Return placeholder success for demo
-    const fakeId = Math.random().toString(36).substring(2, 9);
-    return {
-      success: true,
-      message: 'Reply posted successfully! (Demo mode)',
-      replyId: fakeId,
+      success: false,
+      error: 'Failed to post reply. Please try again.',
     };
   }
+
+  return {
+    success: true,
+    message: 'Reply posted successfully!',
+    replyId: reply.id,
+  };
 }

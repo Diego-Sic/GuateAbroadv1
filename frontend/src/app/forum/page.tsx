@@ -2,19 +2,22 @@ import { Suspense } from 'react';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { ForumLayout } from '@/components/forum/forum-layout';
+import { getPosts } from '@/lib/db/posts';
 
 export const metadata = {
   title: 'Community Forum - GuateAbroad',
   description: 'Connect with fellow Guatemalan students, share experiences, and get advice on scholarships, visas, and more.',
 };
 
-export default function ForumPage() {
+export default async function ForumPage() {
+  const posts = await getPosts();
+
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1 bg-muted/30">
         <Suspense fallback={<ForumLoadingSkeleton />}>
-          <ForumLayout />
+          <ForumLayout initialPosts={posts} />
         </Suspense>
       </main>
       <Footer />

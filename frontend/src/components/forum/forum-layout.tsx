@@ -77,100 +77,17 @@ const categories = [
   },
 ];
 
-// Placeholder posts for demonstration
-const placeholderPosts: Omit<PostCardProps, 'category'>[] = [
-  {
-    id: '1',
-    title: 'Tips for Fulbright application essay - My complete guide',
-    category: { id: 'scholarships', label: 'Scholarships', color: 'bg-blue-500' },
-    author: { username: 'María G.', avatarUrl: null },
-    replies: 12,
-    views: 234,
-    createdAt: '2 hours ago',
-    isPinned: true,
-    excerpt: 'After successfully applying to Fulbright, I want to share my experience and tips for writing a compelling application essay...',
-  },
-  {
-    id: '2',
-    title: 'F-1 visa interview experience in Guatemala City',
-    category: { id: 'visa', label: 'Visa', color: 'bg-green-500' },
-    author: { username: 'Carlos R.', avatarUrl: null },
-    replies: 8,
-    views: 156,
-    createdAt: '5 hours ago',
-    isPinned: false,
-    excerpt: 'Just had my F-1 visa interview at the US Embassy. Here\'s what to expect and how to prepare...',
-  },
-  {
-    id: '3',
-    title: 'Best TOEFL prep resources for Guatemalans',
-    category: { id: 'tests', label: 'Tests', color: 'bg-purple-500' },
-    author: { username: 'Ana L.', avatarUrl: null },
-    replies: 15,
-    views: 312,
-    createdAt: '1 day ago',
-    isPinned: false,
-    excerpt: 'I scored 110 on TOEFL using these free and paid resources. Here are my recommendations...',
-  },
-  {
-    id: '4',
-    title: 'How to choose between universities?',
-    category: { id: 'university', label: 'University', color: 'bg-orange-500' },
-    author: { username: 'Pedro M.', avatarUrl: null },
-    replies: 6,
-    views: 98,
-    createdAt: '2 days ago',
-    isPinned: false,
-  },
-  {
-    id: '5',
-    title: 'Looking for study buddies in Guatemala',
-    category: { id: 'general', label: 'General', color: 'bg-gray-500' },
-    author: { username: 'Sofia V.', avatarUrl: null },
-    replies: 4,
-    views: 67,
-    createdAt: '3 days ago',
-    isPinned: false,
-  },
-  {
-    id: '6',
-    title: 'LASPAU scholarship timeline and requirements',
-    category: { id: 'scholarships', label: 'Scholarships', color: 'bg-blue-500' },
-    author: { username: 'Diego S.', avatarUrl: null },
-    replies: 9,
-    views: 189,
-    createdAt: '4 days ago',
-    isPinned: false,
-  },
-  {
-    id: '7',
-    title: 'GRE study plan - 3 months preparation',
-    category: { id: 'tests', label: 'Tests', color: 'bg-purple-500' },
-    author: { username: 'Laura M.', avatarUrl: null },
-    replies: 11,
-    views: 245,
-    createdAt: '5 days ago',
-    isPinned: false,
-  },
-  {
-    id: '8',
-    title: 'J-1 vs F-1 visa - Which one is right for you?',
-    category: { id: 'visa', label: 'Visa', color: 'bg-green-500' },
-    author: { username: 'Roberto A.', avatarUrl: null },
-    replies: 7,
-    views: 134,
-    createdAt: '1 week ago',
-    isPinned: false,
-  },
-] as PostCardProps[];
+interface ForumLayoutProps {
+  initialPosts: PostCardProps[];
+}
 
-export function ForumLayout() {
+export function ForumLayout({ initialPosts }: ForumLayoutProps) {
   const { user } = useAuth();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortBy, setSortBy] = useState('newest');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const filteredPosts = placeholderPosts.filter((post) => {
+  const filteredPosts = initialPosts.filter((post) => {
     if (selectedCategory !== 'all' && post.category.id !== selectedCategory) {
       return false;
     }

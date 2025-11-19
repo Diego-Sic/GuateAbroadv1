@@ -87,25 +87,26 @@ Create Supabase project and configure database connection.
 
 ---
 
-#### TICKET-004: Create Database Schema - Core Tables
+#### TICKET-004: Create Database Schema - Core Tables ✅
 
 **Priority**: High
 **Estimate**: 3 points
+**Status**: COMPLETED
 
 **Description**:
 Create the core database tables needed for MVP functionality.
 
 **Acceptance Criteria**:
 
-- [ ] Create users table with all fields from schema
-- [ ] Create forum_posts table
-- [ ] Create forum_replies table
-- [ ] Create milestones table
-- [ ] Create milestone_tasks table
-- [ ] Create user_progress table
-- [ ] Create user_task_progress table
-- [ ] Set up all indexes
-- [ ] Configure foreign key relationships
+- [x] Create users table with all fields from schema
+- [x] Create forum_posts table
+- [x] Create forum_replies table
+- [x] Create milestones table
+- [x] Create milestone_tasks table
+- [x] Create user_progress table
+- [x] Create user_task_progress table
+- [x] Set up all indexes
+- [x] Configure foreign key relationships
 
 ---
 
@@ -124,6 +125,26 @@ Configure code quality tools for consistent code style.
 - [ ] Add pre-commit hooks with Husky
 - [ ] Create lint-staged configuration
 - [ ] Document code style guidelines
+
+---
+
+#### TICKET-005B: Set Up Supabase CLI and Migration Workflow
+
+**Priority**: High
+**Estimate**: 2 points
+
+**Description**:
+Configure Supabase CLI for automated database migrations and schema management.
+
+**Acceptance Criteria**:
+
+- [ ] Install Supabase CLI as dev dependency
+- [ ] Initialize Supabase project structure
+- [ ] Link CLI to remote Supabase project
+- [ ] Move existing migrations to proper structure
+- [ ] Configure migration commands in package.json
+- [ ] Document migration workflow in README
+- [ ] Test push/pull migrations
 
 ---
 

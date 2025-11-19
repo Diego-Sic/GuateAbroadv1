@@ -42,50 +42,29 @@ export async function createPost(
     };
   }
 
-  // Try to save to database
-  try {
-    const { data: post, error } = await supabase
-      .from('forum_posts')
-      .insert({
-        title,
-        content,
-        category,
-        author_id: user.id,
-      })
-      .select('id')
-      .single();
+  // Save to database
+  const { data: post, error } = await supabase
+    .from('forum_posts')
+    .insert({
+      title,
+      content,
+      category,
+      author_id: user.id,
+    })
+    .select('id')
+    .single();
 
-    if (error) {
-      // If table doesn't exist, return a placeholder success
-      if (error.code === '42P01' || error.message.includes('does not exist')) {
-        // Generate a fake ID for demo purposes
-        const fakeId = Math.random().toString(36).substring(2, 9);
-        return {
-          success: true,
-          message: 'Post created successfully! (Demo mode - database not set up yet)',
-          postId: fakeId,
-        };
-      }
-
-      console.error('Error creating post:', error);
-      return {
-        success: false,
-        error: 'Failed to create post. Please try again.',
-      };
-    }
-
+  if (error) {
+    console.error('Error creating post:', error);
     return {
-      success: true,
-      message: 'Post created successfully!',
-      postId: post.id,
-    };
-  } catch {
-    // Return placeholder success for demo
-    const fakeId = Math.random().toString(36).substring(2, 9);
-    return {
-      success: true,
-      message: 'Post created successfully! (Demo mode)',
-      postId: fakeId,
+      success: false,
+      error: 'Failed to create post. Please try again.',
     };
   }
+
+  return {
+    success: true,
+    message: 'Post created successfully!',
+    postId: post.id,
+  };
 }
