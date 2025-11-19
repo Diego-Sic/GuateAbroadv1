@@ -344,12 +344,12 @@ Build component to display list of forum posts.
 
 **Acceptance Criteria**:
 
-- [ ] Create post card component
-- [ ] Display post title, category, author, date
-- [ ] Show reply count and view count
-- [ ] Implement pagination or infinite scroll
-- [ ] Add loading skeleton
-- [ ] Handle empty state
+- [x] Create post card component
+- [x] Display post title, category, author, date
+- [x] Show reply count and view count
+- [x] Implement pagination or infinite scroll
+- [x] Add loading skeleton
+- [x] Handle empty state
 
 ---
 
@@ -363,12 +363,12 @@ Build form and functionality to create new forum posts.
 
 **Acceptance Criteria**:
 
-- [ ] Create new post form with title, content, category
-- [ ] Add rich text editor or markdown support
-- [ ] Implement form validation
-- [ ] Save post to database
-- [ ] Redirect to post after creation
-- [ ] Only allow authenticated users
+- [x] Create new post form with title, content, category
+- [x] Add rich text editor or markdown support
+- [x] Implement form validation
+- [x] Save post to database
+- [x] Redirect to post after creation
+- [x] Only allow authenticated users
 
 ---
 
