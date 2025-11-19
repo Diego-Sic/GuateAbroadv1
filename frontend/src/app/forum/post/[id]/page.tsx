@@ -3,6 +3,66 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { PostDetail } from '@/components/forum/post-detail';
 import { getUser } from '@/lib/auth/get-user';
+import type { ReplyData } from '@/components/forum/reply-list';
+
+// Placeholder replies data
+const placeholderReplies: Record<string, ReplyData[]> = {
+  '1': [
+    {
+      id: 'reply-1',
+      content: 'This is incredibly helpful! I\'m applying this year and was struggling with how to structure my essay. The tip about connecting past, present, and future is exactly what I needed. Thank you so much!',
+      author: { id: 'user-4', username: 'Roberto A.', avatarUrl: null },
+      createdAt: '2024-01-15T12:00:00Z',
+      parentReplyId: null,
+    },
+    {
+      id: 'reply-2',
+      content: 'Great post! Quick question - how long did it take you to hear back after submitting your application?',
+      author: { id: 'user-5', username: 'Laura M.', avatarUrl: null },
+      createdAt: '2024-01-15T14:30:00Z',
+      parentReplyId: null,
+    },
+    {
+      id: 'reply-3',
+      content: 'It took about 3 months from submission to interview invitation, then another month for the final result. The wait is tough but worth it!',
+      author: { id: 'user-1', username: 'María G.', avatarUrl: null },
+      createdAt: '2024-01-15T15:00:00Z',
+      parentReplyId: 'reply-2',
+    },
+    {
+      id: 'reply-4',
+      content: 'I also want to add that having a local Fulbright alumni review your essay is invaluable. They know exactly what the committee looks for.',
+      author: { id: 'user-6', username: 'Diego S.', avatarUrl: null },
+      createdAt: '2024-01-16T09:00:00Z',
+      parentReplyId: null,
+    },
+  ],
+  '2': [
+    {
+      id: 'reply-5',
+      content: 'Thanks for sharing! Did they ask you about your plans after graduation? I\'m worried about that question.',
+      author: { id: 'user-7', username: 'Ana P.', avatarUrl: null },
+      createdAt: '2024-01-15T10:00:00Z',
+      parentReplyId: null,
+    },
+    {
+      id: 'reply-6',
+      content: 'Yes, they did ask! I said I plan to return to Guatemala to apply my knowledge. Be honest but also show strong ties to your home country.',
+      author: { id: 'user-2', username: 'Carlos R.', avatarUrl: null },
+      createdAt: '2024-01-15T10:30:00Z',
+      parentReplyId: 'reply-5',
+    },
+  ],
+  '3': [
+    {
+      id: 'reply-7',
+      content: 'The TST Prep YouTube channel is amazing! I went from 85 to 105 just by following their strategies.',
+      author: { id: 'user-8', username: 'Pedro M.', avatarUrl: null },
+      createdAt: '2024-01-14T16:00:00Z',
+      parentReplyId: null,
+    },
+  ],
+};
 
 // Placeholder posts data (same as in forum-layout)
 const placeholderPosts = [
@@ -208,13 +268,20 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
 
   // Check if current user is the author
   const isAuthor = currentUser?.id === post.author.id;
+  const replies = placeholderReplies[id] || [];
 
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1 bg-muted/30">
         <div className="container py-8">
-          <PostDetail post={post} isAuthor={isAuthor} />
+          <PostDetail
+            post={post}
+            isAuthor={isAuthor}
+            replies={replies}
+            currentUserId={currentUser?.id}
+            isAuthenticated={!!currentUser}
+          />
         </div>
       </main>
       <Footer />

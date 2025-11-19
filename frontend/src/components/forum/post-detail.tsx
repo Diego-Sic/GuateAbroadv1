@@ -30,6 +30,8 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { toast } from 'sonner';
+import { ReplyList, type ReplyData } from './reply-list';
+import { ReplyForm } from './reply-form';
 
 interface PostDetailProps {
   post: {
@@ -52,9 +54,18 @@ interface PostDetailProps {
     isPinned?: boolean;
   };
   isAuthor: boolean;
+  replies: ReplyData[];
+  currentUserId?: string;
+  isAuthenticated: boolean;
 }
 
-export function PostDetail({ post, isAuthor }: PostDetailProps) {
+export function PostDetail({
+  post,
+  isAuthor,
+  replies,
+  currentUserId,
+  isAuthenticated,
+}: PostDetailProps) {
   // Increment view count on load (placeholder - would call API)
   useEffect(() => {
     // In production, this would call an API to increment views
@@ -279,15 +290,34 @@ export function PostDetail({ post, isAuthor }: PostDetailProps) {
         </CardContent>
       </Card>
 
-      {/* Replies section placeholder */}
+      {/* Replies section */}
       <Card className="mt-6">
         <CardContent className="p-6">
-          <h2 className="mb-4 text-xl font-semibold">
-            Replies ({post.replies})
+          <h2 className="mb-6 text-xl font-semibold">
+            Replies ({replies.length})
           </h2>
-          <p className="text-muted-foreground">
-            Reply functionality will be implemented in TICKET-020.
-          </p>
+
+          {/* Reply form for authenticated users */}
+          {isAuthenticated ? (
+            <div className="mb-6">
+              <ReplyForm postId={post.id} />
+            </div>
+          ) : (
+            <div className="mb-6 rounded-md border bg-muted/50 p-4 text-center text-sm text-muted-foreground">
+              <a href="/auth/login" className="text-primary hover:underline">
+                Sign in
+              </a>{' '}
+              to join the discussion
+            </div>
+          )}
+
+          {/* Replies list */}
+          <ReplyList
+            postId={post.id}
+            replies={replies}
+            currentUserId={currentUserId}
+            isAuthenticated={isAuthenticated}
+          />
         </CardContent>
       </Card>
     </div>
