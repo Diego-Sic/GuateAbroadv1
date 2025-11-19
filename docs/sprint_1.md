@@ -27,20 +27,21 @@ This sprint focuses on building the Minimum Viable Product (MVP) for GuateAbroad
 
 ### Epic 1: Project Setup & Infrastructure
 
-#### TICKET-001: Initialize Next.js Project
+#### TICKET-001: Initialize Next.js Project ✅
 **Priority**: High
 **Estimate**: 2 points
+**Status**: COMPLETED
 
 **Description**:
 Set up the Next.js 14+ project with TypeScript and configure the basic project structure.
 
 **Acceptance Criteria**:
-- [ ] Create Next.js 14+ project with App Router
-- [ ] Configure TypeScript
-- [ ] Set up folder structure (app, components, lib, types, utils)
-- [ ] Configure path aliases in tsconfig.json
-- [ ] Add .env.example file
-- [ ] Initialize git repository with .gitignore
+- [x] Create Next.js 14+ project with App Router
+- [x] Configure TypeScript
+- [x] Set up folder structure (app, components, lib, types, utils)
+- [x] Configure path aliases in tsconfig.json
+- [x] Add .env.example file
+- [x] Initialize git repository with .gitignore
 
 ---
 
