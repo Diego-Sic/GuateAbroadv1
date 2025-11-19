@@ -28,6 +28,7 @@ This sprint focuses on building the Minimum Viable Product (MVP) for GuateAbroad
 ### Epic 1: Project Setup & Infrastructure
 
 #### TICKET-001: Initialize Next.js Project ✅
+
 **Priority**: High
 **Estimate**: 2 points
 **Status**: COMPLETED
@@ -36,6 +37,7 @@ This sprint focuses on building the Minimum Viable Product (MVP) for GuateAbroad
 Set up the Next.js 14+ project with TypeScript and configure the basic project structure.
 
 **Acceptance Criteria**:
+
 - [x] Create Next.js 14+ project with App Router
 - [x] Configure TypeScript
 - [x] Set up folder structure (app, components, lib, types, utils)
@@ -46,6 +48,7 @@ Set up the Next.js 14+ project with TypeScript and configure the basic project s
 ---
 
 #### TICKET-002: Configure Tailwind CSS and shadcn/ui ✅
+
 **Priority**: High
 **Estimate**: 2 points
 **Status**: COMPLETED
@@ -54,6 +57,7 @@ Set up the Next.js 14+ project with TypeScript and configure the basic project s
 Install and configure Tailwind CSS with shadcn/ui component library.
 
 **Acceptance Criteria**:
+
 - [x] Install and configure Tailwind CSS
 - [x] Set up shadcn/ui with CLI
 - [x] Configure custom color palette (brand colors)
@@ -64,6 +68,7 @@ Install and configure Tailwind CSS with shadcn/ui component library.
 ---
 
 #### TICKET-003: Set Up Supabase Project ✅
+
 **Priority**: High
 **Estimate**: 3 points
 **Status**: COMPLETED (pending user credentials)
@@ -72,6 +77,7 @@ Install and configure Tailwind CSS with shadcn/ui component library.
 Create Supabase project and configure database connection.
 
 **Acceptance Criteria**:
+
 - [ ] Create Supabase project (user action required)
 - [x] Configure environment variables for Supabase connection
 - [x] Set up Supabase client (browser and server)
@@ -82,6 +88,7 @@ Create Supabase project and configure database connection.
 ---
 
 #### TICKET-004: Create Database Schema - Core Tables
+
 **Priority**: High
 **Estimate**: 3 points
 
@@ -89,6 +96,7 @@ Create Supabase project and configure database connection.
 Create the core database tables needed for MVP functionality.
 
 **Acceptance Criteria**:
+
 - [ ] Create users table with all fields from schema
 - [ ] Create forum_posts table
 - [ ] Create forum_replies table
@@ -102,6 +110,7 @@ Create the core database tables needed for MVP functionality.
 ---
 
 #### TICKET-005: Set Up ESLint and Prettier
+
 **Priority**: Medium
 **Estimate**: 1 point
 
@@ -109,6 +118,7 @@ Create the core database tables needed for MVP functionality.
 Configure code quality tools for consistent code style.
 
 **Acceptance Criteria**:
+
 - [ ] Install and configure ESLint
 - [ ] Install and configure Prettier
 - [ ] Add pre-commit hooks with Husky
@@ -120,6 +130,7 @@ Configure code quality tools for consistent code style.
 ### Epic 2: User Authentication
 
 #### TICKET-006: Implement User Registration
+
 **Priority**: High
 **Estimate**: 3 points
 
@@ -127,6 +138,7 @@ Configure code quality tools for consistent code style.
 Create user registration functionality with email and password.
 
 **Acceptance Criteria**:
+
 - [ ] Create registration form with React Hook Form + Zod
 - [ ] Implement Supabase Auth signup
 - [ ] Add email verification flow
@@ -138,6 +150,7 @@ Create user registration functionality with email and password.
 ---
 
 #### TICKET-007: Implement User Login
+
 **Priority**: High
 **Estimate**: 2 points
 
@@ -145,6 +158,7 @@ Create user registration functionality with email and password.
 Create user login functionality.
 
 **Acceptance Criteria**:
+
 - [ ] Create login form with validation
 - [ ] Implement Supabase Auth signin
 - [ ] Handle authentication errors
@@ -155,6 +169,7 @@ Create user login functionality.
 ---
 
 #### TICKET-008: Implement Password Reset
+
 **Priority**: Medium
 **Estimate**: 2 points
 
@@ -162,6 +177,7 @@ Create user login functionality.
 Create password reset functionality.
 
 **Acceptance Criteria**:
+
 - [ ] Create forgot password form
 - [ ] Implement password reset email flow
 - [ ] Create reset password page
@@ -171,6 +187,7 @@ Create password reset functionality.
 ---
 
 #### TICKET-009: Create Auth Middleware and Protected Routes
+
 **Priority**: High
 **Estimate**: 2 points
 
@@ -178,6 +195,7 @@ Create password reset functionality.
 Set up authentication middleware and route protection.
 
 **Acceptance Criteria**:
+
 - [ ] Create Next.js middleware for auth
 - [ ] Protect dashboard and user routes
 - [ ] Redirect unauthenticated users to login
@@ -187,6 +205,7 @@ Set up authentication middleware and route protection.
 ---
 
 #### TICKET-010: Create User Profile Page
+
 **Priority**: Medium
 **Estimate**: 3 points
 
@@ -194,6 +213,7 @@ Set up authentication middleware and route protection.
 Build user profile page with edit functionality.
 
 **Acceptance Criteria**:
+
 - [ ] Create profile page layout
 - [ ] Display user information
 - [ ] Create edit profile form
@@ -206,6 +226,7 @@ Build user profile page with edit functionality.
 ### Epic 3: Landing Page
 
 #### TICKET-011: Create Landing Page Layout ✅
+
 **Priority**: High
 **Estimate**: 3 points
 **Status**: COMPLETED
@@ -214,6 +235,7 @@ Build user profile page with edit functionality.
 Build the main landing page structure and hero section.
 
 **Acceptance Criteria**:
+
 - [x] Create responsive header with navigation
 - [x] Build hero section with CTA buttons
 - [x] Add platform purpose explanation
@@ -223,6 +245,7 @@ Build the main landing page structure and hero section.
 ---
 
 #### TICKET-012: Add Statistics Section
+
 **Priority**: Medium
 **Estimate**: 2 points
 
@@ -230,6 +253,7 @@ Build the main landing page structure and hero section.
 Create statistics section showing platform impact.
 
 **Acceptance Criteria**:
+
 - [ ] Design statistics cards
 - [ ] Add animated counters
 - [ ] Display scholarships available
@@ -239,6 +263,7 @@ Create statistics section showing platform impact.
 ---
 
 #### TICKET-013: Create Features Overview Section
+
 **Priority**: Medium
 **Estimate**: 2 points
 
@@ -246,6 +271,7 @@ Create statistics section showing platform impact.
 Build section showcasing platform features.
 
 **Acceptance Criteria**:
+
 - [ ] Design feature cards with icons
 - [ ] Add descriptions for each feature
 - [ ] Create responsive grid layout
@@ -254,6 +280,7 @@ Build section showcasing platform features.
 ---
 
 #### TICKET-014: Add Testimonials Section
+
 **Priority**: Low
 **Estimate**: 2 points
 
@@ -261,6 +288,7 @@ Build section showcasing platform features.
 Create testimonials/success stories section.
 
 **Acceptance Criteria**:
+
 - [ ] Design testimonial cards
 - [ ] Add placeholder testimonials
 - [ ] Create carousel or grid layout
@@ -269,6 +297,7 @@ Create testimonials/success stories section.
 ---
 
 #### TICKET-015: Implement Newsletter Signup
+
 **Priority**: Low
 **Estimate**: 2 points
 
@@ -276,6 +305,7 @@ Create testimonials/success stories section.
 Add newsletter signup form to landing page.
 
 **Acceptance Criteria**:
+
 - [ ] Create newsletter signup form
 - [ ] Store emails in database
 - [ ] Add validation
@@ -287,6 +317,7 @@ Add newsletter signup form to landing page.
 ### Epic 4: Forum System
 
 #### TICKET-016: Create Forum Layout and Navigation
+
 **Priority**: High
 **Estimate**: 2 points
 
@@ -294,6 +325,7 @@ Add newsletter signup form to landing page.
 Build the main forum page layout with category navigation.
 
 **Acceptance Criteria**:
+
 - [ ] Create forum page layout
 - [ ] Add category sidebar/tabs (Scholarships, Visa, Tests, General, University)
 - [ ] Create responsive navigation
@@ -303,6 +335,7 @@ Build the main forum page layout with category navigation.
 ---
 
 #### TICKET-017: Create Post List Component
+
 **Priority**: High
 **Estimate**: 3 points
 
@@ -310,6 +343,7 @@ Build the main forum page layout with category navigation.
 Build component to display list of forum posts.
 
 **Acceptance Criteria**:
+
 - [ ] Create post card component
 - [ ] Display post title, category, author, date
 - [ ] Show reply count and view count
@@ -320,6 +354,7 @@ Build component to display list of forum posts.
 ---
 
 #### TICKET-018: Implement Create Post Functionality
+
 **Priority**: High
 **Estimate**: 3 points
 
@@ -327,6 +362,7 @@ Build component to display list of forum posts.
 Build form and functionality to create new forum posts.
 
 **Acceptance Criteria**:
+
 - [ ] Create new post form with title, content, category
 - [ ] Add rich text editor or markdown support
 - [ ] Implement form validation
@@ -337,6 +373,7 @@ Build form and functionality to create new forum posts.
 ---
 
 #### TICKET-019: Create Post Detail Page
+
 **Priority**: High
 **Estimate**: 3 points
 
@@ -344,6 +381,7 @@ Build form and functionality to create new forum posts.
 Build the individual post view page.
 
 **Acceptance Criteria**:
+
 - [ ] Display post title, content, author info
 - [ ] Show post metadata (date, views, category)
 - [ ] Increment view count on load
@@ -353,6 +391,7 @@ Build the individual post view page.
 ---
 
 #### TICKET-020: Implement Reply System
+
 **Priority**: High
 **Estimate**: 3 points
 
@@ -360,6 +399,7 @@ Build the individual post view page.
 Build reply functionality for forum posts.
 
 **Acceptance Criteria**:
+
 - [ ] Create reply form component
 - [ ] Display replies in threaded view
 - [ ] Support nested replies (one level)
@@ -370,6 +410,7 @@ Build reply functionality for forum posts.
 ---
 
 #### TICKET-021: Implement Post Voting
+
 **Priority**: Medium
 **Estimate**: 2 points
 
@@ -377,6 +418,7 @@ Build reply functionality for forum posts.
 Add upvote/downvote functionality to posts.
 
 **Acceptance Criteria**:
+
 - [ ] Create vote buttons component
 - [ ] Implement voting logic
 - [ ] Prevent duplicate votes
@@ -387,6 +429,7 @@ Add upvote/downvote functionality to posts.
 ---
 
 #### TICKET-022: Create Forum API Routes
+
 **Priority**: High
 **Estimate**: 3 points
 
@@ -394,6 +437,7 @@ Add upvote/downvote functionality to posts.
 Build API routes for forum CRUD operations.
 
 **Acceptance Criteria**:
+
 - [ ] GET /api/forum/posts - List posts with filters
 - [ ] GET /api/forum/posts/:id - Get single post
 - [ ] POST /api/forum/posts - Create post
@@ -408,6 +452,7 @@ Build API routes for forum CRUD operations.
 ### Epic 5: Roadmap/Progress Tracker
 
 #### TICKET-023: Seed Default Milestones and Tasks
+
 **Priority**: High
 **Estimate**: 2 points
 
@@ -415,6 +460,7 @@ Build API routes for forum CRUD operations.
 Create seed data for default milestones and tasks.
 
 **Acceptance Criteria**:
+
 - [ ] Create 8 default milestones from spec
 - [ ] Add 5-10 tasks per milestone
 - [ ] Include resource links for tasks
@@ -424,6 +470,7 @@ Create seed data for default milestones and tasks.
 ---
 
 #### TICKET-024: Create Roadmap Page Layout
+
 **Priority**: High
 **Estimate**: 3 points
 
@@ -431,6 +478,7 @@ Create seed data for default milestones and tasks.
 Build the main roadmap page showing all milestones.
 
 **Acceptance Criteria**:
+
 - [ ] Create roadmap page layout
 - [ ] Display milestones in timeline/list view
 - [ ] Show progress percentage per milestone
@@ -441,6 +489,7 @@ Build the main roadmap page showing all milestones.
 ---
 
 #### TICKET-025: Build Milestone Detail Component
+
 **Priority**: High
 **Estimate**: 3 points
 
@@ -448,6 +497,7 @@ Build the main roadmap page showing all milestones.
 Create component showing milestone tasks and details.
 
 **Acceptance Criteria**:
+
 - [ ] Display milestone title and description
 - [ ] List all tasks with checkboxes
 - [ ] Show task completion status
@@ -458,6 +508,7 @@ Create component showing milestone tasks and details.
 ---
 
 #### TICKET-026: Implement Task Completion Tracking
+
 **Priority**: High
 **Estimate**: 3 points
 
@@ -465,6 +516,7 @@ Create component showing milestone tasks and details.
 Build functionality to track task completion.
 
 **Acceptance Criteria**:
+
 - [ ] Toggle task completion state
 - [ ] Save progress to user_task_progress table
 - [ ] Update milestone progress
@@ -475,6 +527,7 @@ Build functionality to track task completion.
 ---
 
 #### TICKET-027: Create Progress Dashboard Widget
+
 **Priority**: Medium
 **Estimate**: 2 points
 
@@ -482,6 +535,7 @@ Build functionality to track task completion.
 Build a dashboard widget showing user progress summary.
 
 **Acceptance Criteria**:
+
 - [ ] Display overall completion percentage
 - [ ] Show current milestone
 - [ ] List next tasks to complete
@@ -491,6 +545,7 @@ Build a dashboard widget showing user progress summary.
 ---
 
 #### TICKET-028: Create Roadmap API Routes
+
 **Priority**: High
 **Estimate**: 2 points
 
@@ -498,6 +553,7 @@ Build a dashboard widget showing user progress summary.
 Build API routes for roadmap functionality.
 
 **Acceptance Criteria**:
+
 - [ ] GET /api/roadmap/milestones - Get all milestones with tasks
 - [ ] GET /api/roadmap/progress - Get user's progress
 - [ ] PUT /api/roadmap/tasks/:id/progress - Update task completion
@@ -508,6 +564,7 @@ Build API routes for roadmap functionality.
 ### Epic 6: Shared Components & UI
 
 #### TICKET-029: Create Reusable Layout Components
+
 **Priority**: High
 **Estimate**: 2 points
 
@@ -515,6 +572,7 @@ Build API routes for roadmap functionality.
 Build shared layout components used across the app.
 
 **Acceptance Criteria**:
+
 - [ ] Create main navigation component
 - [ ] Build sidebar component
 - [ ] Create dashboard layout wrapper
@@ -524,6 +582,7 @@ Build shared layout components used across the app.
 ---
 
 #### TICKET-030: Create Loading and Error States
+
 **Priority**: Medium
 **Estimate**: 2 points
 
@@ -531,6 +590,7 @@ Build shared layout components used across the app.
 Build consistent loading and error UI components.
 
 **Acceptance Criteria**:
+
 - [ ] Create loading spinner component
 - [ ] Build skeleton loaders for lists/cards
 - [ ] Create error boundary component
@@ -540,6 +600,7 @@ Build consistent loading and error UI components.
 ---
 
 #### TICKET-031: Create User Dashboard Page
+
 **Priority**: High
 **Estimate**: 3 points
 
@@ -547,6 +608,7 @@ Build consistent loading and error UI components.
 Build the main user dashboard after login.
 
 **Acceptance Criteria**:
+
 - [ ] Create dashboard layout
 - [ ] Add welcome message with user name
 - [ ] Include progress summary widget
@@ -559,6 +621,7 @@ Build the main user dashboard after login.
 ### Epic 7: Deployment & DevOps
 
 #### TICKET-032: Configure Vercel Deployment
+
 **Priority**: High
 **Estimate**: 2 points
 
@@ -566,6 +629,7 @@ Build the main user dashboard after login.
 Set up Vercel deployment pipeline.
 
 **Acceptance Criteria**:
+
 - [ ] Connect repository to Vercel
 - [ ] Configure environment variables
 - [ ] Set up production branch
@@ -575,6 +639,7 @@ Set up Vercel deployment pipeline.
 ---
 
 #### TICKET-033: Configure Supabase for Production
+
 **Priority**: High
 **Estimate**: 2 points
 
@@ -582,6 +647,7 @@ Set up Vercel deployment pipeline.
 Prepare Supabase project for production use.
 
 **Acceptance Criteria**:
+
 - [ ] Enable email confirmations
 - [ ] Configure auth redirect URLs
 - [ ] Set up database backups
@@ -591,6 +657,7 @@ Prepare Supabase project for production use.
 ---
 
 #### TICKET-034: Create README and Documentation
+
 **Priority**: Medium
 **Estimate**: 2 points
 
@@ -598,6 +665,7 @@ Prepare Supabase project for production use.
 Document project setup and development workflow.
 
 **Acceptance Criteria**:
+
 - [ ] Write comprehensive README
 - [ ] Document environment setup
 - [ ] Add database setup instructions
@@ -609,22 +677,23 @@ Document project setup and development workflow.
 
 ## Ticket Summary
 
-| Epic | Tickets | Total Points |
-|------|---------|--------------|
-| Project Setup & Infrastructure | 5 | 11 |
-| User Authentication | 5 | 12 |
-| Landing Page | 5 | 11 |
-| Forum System | 7 | 19 |
-| Roadmap/Progress Tracker | 6 | 15 |
-| Shared Components & UI | 3 | 7 |
-| Deployment & DevOps | 3 | 6 |
-| **Total** | **34** | **81** |
+| Epic                           | Tickets | Total Points |
+| ------------------------------ | ------- | ------------ |
+| Project Setup & Infrastructure | 5       | 11           |
+| User Authentication            | 5       | 12           |
+| Landing Page                   | 5       | 11           |
+| Forum System                   | 7       | 19           |
+| Roadmap/Progress Tracker       | 6       | 15           |
+| Shared Components & UI         | 3       | 7            |
+| Deployment & DevOps            | 3       | 6            |
+| **Total**                      | **34**  | **81**       |
 
 ---
 
 ## Priority Order
 
 ### Must Have (P0)
+
 - TICKET-001 to TICKET-004 (Project Setup)
 - TICKET-006, TICKET-007, TICKET-009 (Core Auth)
 - TICKET-011 (Landing Page Layout)
@@ -634,6 +703,7 @@ Document project setup and development workflow.
 - TICKET-032, TICKET-033 (Deployment)
 
 ### Should Have (P1)
+
 - TICKET-005 (Code Quality)
 - TICKET-008, TICKET-010 (Additional Auth)
 - TICKET-012, TICKET-013 (Landing Sections)
@@ -643,6 +713,7 @@ Document project setup and development workflow.
 - TICKET-034 (Documentation)
 
 ### Nice to Have (P2)
+
 - TICKET-014, TICKET-015 (Testimonials, Newsletter)
 
 ---

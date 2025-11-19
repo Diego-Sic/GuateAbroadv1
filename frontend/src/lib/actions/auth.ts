@@ -36,18 +36,22 @@ export async function signUp(
 
   const supabase = await createClient();
 
-  // Check if username is already taken
-  const { data: existingUser } = await supabase
-    .from('users')
-    .select('username')
-    .eq('username', username)
-    .single();
+  // Check if username is already taken (skip if users table doesn't exist yet)
+  try {
+    const { data: existingUser } = await supabase
+      .from('users')
+      .select('username')
+      .eq('username', username)
+      .single();
 
-  if (existingUser) {
-    return {
-      success: false,
-      error: 'Username is already taken',
-    };
+    if (existingUser) {
+      return {
+        success: false,
+        error: 'Username is already taken',
+      };
+    }
+  } catch {
+    // Table might not exist yet, skip username check
   }
 
   // Sign up with Supabase Auth
@@ -55,7 +59,7 @@ export async function signUp(
     email,
     password,
     options: {
-      emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
+      emailRedirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/auth/callback`,
       data: {
         username,
       },
@@ -83,17 +87,21 @@ export async function signUp(
     };
   }
 
-  // Create user profile in database
-  const { error: profileError } = await supabase.from('users').insert({
-    id: authData.user.id,
-    email: authData.user.email!,
-    username,
-    email_verified: false,
-  });
+  // Create user profile in database (skip if users table doesn't exist yet)
+  try {
+    const { error: profileError } = await supabase.from('users').insert({
+      id: authData.user.id,
+      email: authData.user.email!,
+      username,
+      email_verified: false,
+    });
 
-  if (profileError) {
-    // Log error but don't fail - the trigger should handle this as backup
-    console.error('Error creating user profile:', profileError);
+    if (profileError) {
+      // Log error but don't fail - the trigger should handle this as backup
+      console.error('Error creating user profile:', profileError);
+    }
+  } catch {
+    // Table might not exist yet, skip profile creation
   }
 
   // Check if email confirmation is required
@@ -186,7 +194,7 @@ export async function requestPasswordReset(
   const supabase = await createClient();
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/reset-password`,
+    redirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/auth/reset-password`,
   });
 
   if (error) {

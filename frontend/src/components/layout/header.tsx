@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, User } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/use-auth';
@@ -49,7 +49,12 @@ export function Header() {
                 <Link href="/dashboard">Dashboard</Link>
               </Button>
               <Button asChild>
-                <Link href="/profile">Profile</Link>
+                <Link href="/profile">
+                  <User className="mr-2 h-4 w-4" />
+                  {user.user_metadata?.username ||
+                    user.email?.split('@')[0] ||
+                    'Profile'}
+                </Link>
               </Button>
             </>
           ) : (
@@ -99,7 +104,12 @@ export function Header() {
                     <Link href="/dashboard">Dashboard</Link>
                   </Button>
                   <Button asChild>
-                    <Link href="/profile">Profile</Link>
+                    <Link href="/profile">
+                      <User className="mr-2 h-4 w-4" />
+                      {user.user_metadata?.username ||
+                        user.email?.split('@')[0] ||
+                        'Profile'}
+                    </Link>
                   </Button>
                 </>
               ) : (
