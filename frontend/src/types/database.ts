@@ -13,8 +13,18 @@ export type Json =
   | Json[];
 
 // Enum types
-export type ForumCategory = 'scholarships' | 'visa' | 'tests' | 'university' | 'general';
-export type EducationLevel = 'high_school' | 'undergraduate' | 'graduate' | 'postgraduate' | 'other';
+export type ForumCategory =
+  | 'scholarships'
+  | 'visa'
+  | 'tests'
+  | 'university'
+  | 'general';
+export type EducationLevel =
+  | 'high_school'
+  | 'undergraduate'
+  | 'graduate'
+  | 'postgraduate'
+  | 'other';
 
 export interface Database {
   public: {
@@ -355,9 +365,12 @@ export interface Database {
 }
 
 // Convenience types for easier usage
-export type Tables<T extends keyof Database['public']['Tables']> = Database['public']['Tables'][T]['Row'];
-export type InsertTables<T extends keyof Database['public']['Tables']> = Database['public']['Tables'][T]['Insert'];
-export type UpdateTables<T extends keyof Database['public']['Tables']> = Database['public']['Tables'][T]['Update'];
+export type Tables<T extends keyof Database['public']['Tables']> =
+  Database['public']['Tables'][T]['Row'];
+export type InsertTables<T extends keyof Database['public']['Tables']> =
+  Database['public']['Tables'][T]['Insert'];
+export type UpdateTables<T extends keyof Database['public']['Tables']> =
+  Database['public']['Tables'][T]['Update'];
 
 // Specific table types
 export type User = Tables<'users'>;

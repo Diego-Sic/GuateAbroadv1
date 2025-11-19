@@ -1,0 +1,31 @@
+{
+  "name": "guateabroad-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GuateAbroad - Platform to help Guatemalan students navigate US scholarship applications",
+  "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "lint": "cd frontend && npm run lint",
+    "lint:fix": "cd frontend && npm run lint:fix",
+    "format": "cd frontend && npm run format",
+    "format:check": "cd frontend && npm run format:check",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.6"
+  },
+  "lint-staged": {
+    "frontend/**/*.{js,jsx,ts,tsx}": [
+      "cd frontend && npx eslint --fix",
+      "cd frontend && npx prettier --write"
+    ],
+    "frontend/**/*.{json,md,css,scss}": [
+      "cd frontend && npx prettier --write"
+    ]
+  },
+  "engines": {
+    "node": ">=20.12.0"
+  }
+}
