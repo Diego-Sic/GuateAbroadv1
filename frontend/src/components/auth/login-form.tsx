@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Loader2, Eye, EyeOff } from 'lucide-react';
 
@@ -32,9 +32,13 @@ import { toast } from 'sonner';
 
 export function LoginForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+
+  // Get the redirect URL from query params
+  const redirectTo = searchParams.get('next') || '/dashboard';
 
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
@@ -54,7 +58,7 @@ export function LoginForm() {
         toast.success('Welcome back!', {
           description: result.message,
         });
-        router.push('/dashboard');
+        router.push(redirectTo);
         router.refresh();
       } else {
         toast.error('Sign in failed', {
