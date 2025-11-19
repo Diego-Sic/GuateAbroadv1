@@ -1,12 +1,21 @@
+import { Header } from '@/components/layout/header';
+import { Footer } from '@/components/layout/footer';
+import { HeroSection } from '@/components/landing/hero-section';
+import { FeaturesSection } from '@/components/landing/features-section';
+import { AboutSection } from '@/components/landing/about-section';
+import { CtaSection } from '@/components/landing/cta-section';
+
 export default function Home() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">GuateAbroad</h1>
-        <p className="text-lg text-gray-600">
-          Helping Guatemalan students achieve their dreams of studying in the US
-        </p>
-      </div>
+    <div className="flex min-h-screen flex-col">
+      <Header />
+      <main className="flex-1">
+        <HeroSection />
+        <FeaturesSection />
+        <AboutSection />
+        <CtaSection />
+      </main>
+      <Footer />
     </div>
   );
 }
