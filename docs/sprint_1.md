@@ -326,11 +326,11 @@ Build the main forum page layout with category navigation.
 
 **Acceptance Criteria**:
 
-- [ ] Create forum page layout
-- [ ] Add category sidebar/tabs (Scholarships, Visa, Tests, General, University)
-- [ ] Create responsive navigation
-- [ ] Add search input placeholder
-- [ ] Implement sorting options (newest, popular)
+- [x] Create forum page layout
+- [x] Add category sidebar/tabs (Scholarships, Visa, Tests, General, University)
+- [x] Create responsive navigation
+- [x] Add search input placeholder
+- [x] Implement sorting options (newest, popular)
 
 ---
 
