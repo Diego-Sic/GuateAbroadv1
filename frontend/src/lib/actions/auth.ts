@@ -4,8 +4,12 @@ import { createClient } from '@/lib/supabase/server';
 import {
   registerSchema,
   loginSchema,
+  forgotPasswordSchema,
+  resetPasswordSchema,
   type RegisterFormData,
   type LoginFormData,
+  type ForgotPasswordFormData,
+  type ResetPasswordFormData,
 } from '@/lib/validations/auth';
 import { redirect } from 'next/navigation';
 
@@ -162,6 +166,72 @@ export async function signIn(data: LoginFormData): Promise<AuthActionResult> {
   return {
     success: true,
     message: 'Signed in successfully',
+  };
+}
+
+export async function requestPasswordReset(
+  data: ForgotPasswordFormData
+): Promise<AuthActionResult> {
+  const validatedFields = forgotPasswordSchema.safeParse(data);
+
+  if (!validatedFields.success) {
+    return {
+      success: false,
+      error: validatedFields.error.issues[0]?.message || 'Invalid input',
+    };
+  }
+
+  const { email } = validatedFields.data;
+
+  const supabase = await createClient();
+
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/reset-password`,
+  });
+
+  if (error) {
+    return {
+      success: false,
+      error: error.message,
+    };
+  }
+
+  return {
+    success: true,
+    message: 'Check your email for a password reset link',
+  };
+}
+
+export async function resetPassword(
+  data: ResetPasswordFormData
+): Promise<AuthActionResult> {
+  const validatedFields = resetPasswordSchema.safeParse(data);
+
+  if (!validatedFields.success) {
+    return {
+      success: false,
+      error: validatedFields.error.issues[0]?.message || 'Invalid input',
+    };
+  }
+
+  const { password } = validatedFields.data;
+
+  const supabase = await createClient();
+
+  const { error } = await supabase.auth.updateUser({
+    password,
+  });
+
+  if (error) {
+    return {
+      success: false,
+      error: error.message,
+    };
+  }
+
+  return {
+    success: true,
+    message: 'Password updated successfully',
   };
 }
 
